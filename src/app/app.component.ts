@@ -11,9 +11,7 @@ export class AppComponent {
 
   constructor(public afAuth: AngularFireAuth) {
   }
-  login() {
-    this.afAuth.signInWithEmailAndPassword('admin','123456')
-  }
+
   logout() {
     this.afAuth.signOut();
   }

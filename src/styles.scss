@@ -5,3 +5,8 @@
 
 /* Importing Datepicker SCSS file. */
 @import "~ngx-bootstrap/datepicker/bs-datepicker";
+
+html {
+    min-height: 100%;
+    position  : relative;
+}

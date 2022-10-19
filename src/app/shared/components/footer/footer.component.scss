@@ -1,0 +1,32 @@
+.footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    .footer-nav {
+        display: inline-block;
+        padding: 10px 15px;
+        line-height: 60px;
+        margin-left: 0;
+
+        p {
+            color: #f0f1f3;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 0;
+            padding: 0;
+
+            a {
+                color: #ffc107;;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-nav {
+        p {
+            font-size: 8px;
+        }
+    }
+}

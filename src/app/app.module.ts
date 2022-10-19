@@ -10,15 +10,22 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-import { LoginComponent } from './modules/auth/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
+
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
+import { LoginComponent } from './modules/auth/login/login.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +33,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
+    BsDropdownModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [ AngularFireAuth ],

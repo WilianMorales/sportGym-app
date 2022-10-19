@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">SportGym</a>
+    <a class="navbar-brand" href="#">
+        <img src="/assets/imgs/logo.png" width="120" height="60" class="d-inline-block align-top" alt="SportGym">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent" aria-expanded="false"
         aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
@@ -7,7 +9,7 @@
     </button>
 
     <div class="collapse navbar-collapse" [collapse]="isCollapsed" [isAnimated]="true" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item dropdown" dropdown>
                 <a class="nav-link dropdown-toggle active" dropdownToggle href="#" role="button" data-toggle="dropdown"
                     aria-expanded="false">
@@ -62,7 +64,8 @@
                 </div>
             </li>
         </ul>
+
+        <button class="btn btn-danger my-2 my-sm-0" (click)="logout()">Logout</button>
     </div>
 
-    <button class="btn btn-danger" (click)="logout()">Logout</button>
 </nav>

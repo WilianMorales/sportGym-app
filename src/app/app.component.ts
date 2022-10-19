@@ -12,8 +12,4 @@ export class AppComponent {
   constructor(public afAuth: AngularFireAuth) {
   }
 
-  logout() {
-    this.afAuth.signOut();
-  }
-
 }

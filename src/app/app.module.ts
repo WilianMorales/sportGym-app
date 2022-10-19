@@ -13,6 +13,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { LoginComponent } from './modules/auth/login/login.component';
@@ -33,6 +34,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
+    CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
   ],

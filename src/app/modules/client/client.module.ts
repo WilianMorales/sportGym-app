@@ -8,6 +8,7 @@ import { AddClientComponent } from './add-client/add-client.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { MessagesService } from 'src/app/shared/services/messages.service';
 
 
 
@@ -23,6 +24,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     ReactiveFormsModule,
     AngularFireStorageModule,
     ProgressbarModule.forRoot()
-  ]
+  ],
+  providers: [MessagesService]
 })
 export class ClientModule { }

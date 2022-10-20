@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { MessagesService } from 'src/app/shared/services/messages.service';
 
 @Component({
   selector: 'app-add-client',
@@ -22,7 +23,8 @@ export class AddClientComponent implements OnInit {
     private fb: FormBuilder,
     private storage: AngularFireStorage,
     private db: AngularFirestore,
-    private activeRouter: ActivatedRoute
+    private activeRouter: ActivatedRoute,
+    private msg: MessagesService
   ) { }
 
   ngOnInit(): void {
@@ -73,10 +75,10 @@ export class AddClientComponent implements OnInit {
   onSubmit(): void {
     this.formClient.value.imgUrl = this.urlImagen;
     this.formClient.value.fechaNacimiento = new Date(this.formClient.value.fechaNacimiento);
-    console.log(this.formClient.value);
-
     this.db.collection('clientes').add(this.formClient.value).then(() => {
-      console.log('Registro Creado');
+      this.msg.messageSuccess(`Cliente ${this.formClient.value.name}`, 'Se agrego correctamente');
+      this.formClient.reset();
+      this.uploadPercent = 0;
     })
 
   }
@@ -89,14 +91,14 @@ export class AddClientComponent implements OnInit {
       this.formClient.value.fechaNacimiento = new Date(this.formClient.value.fechaNacimiento);
 
       this.db.doc('clientes/' + this.id).update(this.formClient.value).then(() => {
-        console.log('Se Edito correctamente');
+        this.msg.messageSuccess(`Cliente ${this.formClient.value.name}`, 'Se actualizo los datos correctamente');
       }).catch(() => {
-        console.log('error');
+        this.msg.messageError('Error', 'Ocurrio algun error');
       });
 
     }
   }
-
+  
   //file type validation
   uploadFile(event: any): void {
     if (event.target.files && event.target.files[0]) {

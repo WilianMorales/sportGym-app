@@ -65,6 +65,6 @@
         </div>
 
         <button *ngIf="!esEditable" class="btn btn-primary" [disabled]="formClient.invalid && !urlImagen" (click)="onSubmit()">Agregar</button>
-        <button *ngIf="esEditable" class="btn btn-primary" [disabled]="formClient.invalid && !urlImagen" (click)="updateClient()">Editar</button>
+        <button *ngIf="esEditable" class="btn btn-primary" (click)="updateClient()">Editar</button>
     </form>
 </div>

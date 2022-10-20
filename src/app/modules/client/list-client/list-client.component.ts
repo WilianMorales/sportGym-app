@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  AngularFirestore } from '@angular/fire/compat/firestore';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-list-client',
@@ -13,9 +14,12 @@ export class ListClientComponent implements OnInit {
   constructor(private db: AngularFirestore) { }
 
   ngOnInit(): void {
+    this.listClientes();
+  }
+
+  listClientes(): void {
     this.clientes.length = 0;
     this.db.collection('clientes').get().subscribe((res) => {
-
       res.docs.forEach((item) => {
 
         let cliente: any = item.data();
@@ -27,4 +31,25 @@ export class ListClientComponent implements OnInit {
     });
   }
 
+  deleteClient(id: string) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.db.doc<any>('clientes/' + id).delete();
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        ),
+        this.listClientes();
+      }
+    })
+  }
 }

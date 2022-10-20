@@ -16,7 +16,7 @@
                     <h5 class="card-title">{{cliente.name}} {{cliente.lastName}}</h5>
                     <p>{{cliente.id}}</p>
                     <a [routerLink]="['/clientes/editar-cliente/', cliente.id]" class="card-link">Editar</a>
-                    <a href="#" class="card-link text-danger">Desactivar</a>
+                    <a (click)="deleteClient(cliente.id)" class="text-danger card-link">Desactivar</a>
                 </div>
             </div>
         </div>

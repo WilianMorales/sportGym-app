@@ -13,9 +13,6 @@ export class ListClientComponent implements OnInit {
   constructor(private db: AngularFirestore) { }
 
   ngOnInit(): void {
-    /* this.db.collection('clientes').valueChanges().subscribe((res) => {
-      this.clientes = res;
-    }); */
     this.clientes.length = 0;
     this.db.collection('clientes').get().subscribe((res) => {
 

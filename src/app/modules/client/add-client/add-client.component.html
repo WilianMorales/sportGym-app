@@ -1,6 +1,6 @@
 <div class="container mt-4 mb-4">
     <h4 class="title">Registrar nuevo Cliente</h4>
-    <form [formGroup]="formClient" (ngSubmit)="onSubmit()">
+    <form [formGroup]="formClient">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="name">Nombre</label>
@@ -61,9 +61,10 @@
         </div>
 
         <div class="form-group">
-            <progressbar [value]="porcentajeSubida" type="success" [striped]="true">{{porcentajeSubida}}%</progressbar>
+            <progressbar [value]="uploadPercent" type="success" [striped]="true">{{uploadPercent}}%</progressbar>
         </div>
 
-        <button class="btn btn-primary" [disabled]="formClient.invalid" type="submit">Agregar</button>
+        <button *ngIf="!esEditable" class="btn btn-primary" [disabled]="formClient.invalid && !urlImagen" (click)="onSubmit()">Agregar</button>
+        <button *ngIf="esEditable" class="btn btn-primary" [disabled]="formClient.invalid && !urlImagen" (click)="updateClient()">Editar</button>
     </form>
 </div>

@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -19,6 +20,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+
 
 
 @NgModule({
@@ -36,9 +38,9 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     NgxSpinnerModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [ AngularFireAuth ],
+  providers: [ AngularFireAuth, AngularFirestore ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

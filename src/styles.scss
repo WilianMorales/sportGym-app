@@ -7,6 +7,11 @@
 @import "~ngx-bootstrap/datepicker/bs-datepicker";
 
 html {
-    min-height: 100%;
     position  : relative;
+    min-height: 100%;
+}
+
+body {
+    padding-bottom: 80px;
+    min-height: calc(100% - 80px);
 }

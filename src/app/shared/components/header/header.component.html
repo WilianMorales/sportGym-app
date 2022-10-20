@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand">
         <img src="/assets/imgs/logo.png" width="120" height="60" class="d-inline-block align-top" alt="SportGym">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -8,10 +8,10 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" [collapse]="isCollapsed" [isAnimated]="true" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" [collapse]="!isCollapsed" [isAnimated]="true" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item dropdown" dropdown>
-                <a class="nav-link dropdown-toggle active" dropdownToggle href="#" role="button" data-toggle="dropdown"
+                <a class="nav-link dropdown-toggle active" dropdownToggle role="button" data-toggle="dropdown"
                     aria-expanded="false">
                     Inscripción
                 </a>
@@ -23,19 +23,19 @@
             </li>
 
             <li class="nav-item dropdown" dropdown>
-                <a class="nav-link dropdown-toggle" dropdownToggle href="#" role="button" data-toggle="dropdown"
+                <a class="nav-link dropdown-toggle" dropdownToggle role="button" data-toggle="dropdown"
                     aria-expanded="false">
                     Clientes
                 </a>
                 <div class="dropdown-menu" *dropdownMenu>
-                    <a class="dropdown-item" href="#">Agregar Cliente</a>
+                    <a class="dropdown-item" [routerLink]="['/clientes/nuevo-cliente']">Agregar Cliente</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Ver Clientes</a>
+                    <a class="dropdown-item" [routerLink]="['/clientes']">Ver Clientes</a>
                 </div>
             </li>
 
             <li class="nav-item dropdown" dropdown>
-                <a class="nav-link dropdown-toggle" dropdownToggle href="#" role="button" data-toggle="dropdown"
+                <a class="nav-link dropdown-toggle" dropdownToggle role="button" data-toggle="dropdown"
                     aria-expanded="false">
                     Precios
                 </a>
@@ -51,7 +51,7 @@
             </li>
 
             <li class="nav-item dropdown" dropdown>
-                <a class="nav-link dropdown-toggle" dropdownToggle href="#" role="button" data-toggle="dropdown"
+                <a class="nav-link dropdown-toggle" dropdownToggle role="button" data-toggle="dropdown"
                     aria-expanded="false">
                     Reportes
                 </a>

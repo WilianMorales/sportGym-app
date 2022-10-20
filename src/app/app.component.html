@@ -1,15 +1,11 @@
-<div *ngIf="afAuth.user | async as user; else showLogin">
+<div *ngIf="usuario && !cargando; else showLogin">
   <app-header></app-header>
-
   <router-outlet></router-outlet>
-
-  <h1>Hello {{ user.email }}!</h1>
-
   <app-footer></app-footer>
 </div>
 
 <ng-template #showLogin>
   <div class="container">
-    <app-login></app-login>
+    <app-login *ngIf="!cargando"></app-login>
   </div>
 </ng-template>

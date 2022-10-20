@@ -1,0 +1,69 @@
+<div class="container mt-4 mb-4">
+    <h4 class="title">Registrar nuevo Cliente</h4>
+    <form [formGroup]="formClient" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">Nombre</label>
+                <input type="text" formControlName="name" class="form-control" id="name" [class]="isValidField('name')">
+                <div class="invalid-feedback">
+                    <span *ngIf="formClient.get('name')?.errors?.['required']">Este campo es requerido.</span>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName">Apellido</label>
+                <input type="text" formControlName="lastName" class="form-control" id="lastName"
+                    [class]="isValidField('lastName')">
+                <div class="invalid-feedback">
+                    <span *ngIf="formClient.get('lastName')?.errors?.['required']">Este campo es requerido.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Correo</label>
+            <input type="email" class="form-control" id="email" aria-describedby="email" formControlName="email"
+                [class]="isValidField('email')">
+            <div class="invalid-feedback">
+                <span *ngIf="formClient.get('email')?.errors?.['required']">Este campo es requerido.</span>
+                <span *ngIf="formClient.get('email')?.errors?.pattern">Porfavor introduzca un email valido.</span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="dni">DNI</label>
+                <input type="number" formControlName="dni" class="form-control" id="dni"
+                    [class]="notRequiredHasValue('dni')">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="fechaNacimiento">Fecha Nacimiento</label>
+                <input type="date" formControlName="fechaNacimiento" class="form-control" id="fechaNacimiento"
+                    [class]="isValidField('fechaNacimiento')">
+                <div class="invalid-feedback">
+                    <span *ngIf="formClient.get('fechaNacimiento')?.errors?.['required']">Este campo es
+                        requerido.</span>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="phone">Telefono</label>
+                <input type="tel" formControlName="phone" class="form-control" id="phone"
+                    [class]="notRequiredHasValue('phone')">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="imagUrl">Image</label>
+            <input (change)="uploadFile($event)" type="file" formControlName="imgUrl"
+                class="form-control-file" id="imgUrl" [class]="isValidField('imgUrl')">
+            <div *ngIf="formClient.get('fechaNacimiento')?.errors" class="invalid-feedback">
+                <span *ngIf="formClient.get('fechaNacimiento')?.errors?.['required']">JPG Image is required</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <progressbar [value]="porcentajeSubida" type="success" [striped]="true">{{porcentajeSubida}}%</progressbar>
+        </div>
+
+        <button class="btn btn-primary" [disabled]="formClient.invalid" type="submit">Agregar</button>
+    </form>
+</div>

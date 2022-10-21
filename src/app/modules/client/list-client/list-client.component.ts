@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  AngularFirestore } from '@angular/fire/compat/firestore';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-list-client',
@@ -11,7 +12,7 @@ export class ListClientComponent implements OnInit {
 
   clientes: any[] = new Array<any>();
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private db: AngularFirestore, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.listClientes();
@@ -19,6 +20,7 @@ export class ListClientComponent implements OnInit {
 
   listClientes(): void {
     this.clientes.length = 0;
+    this.spinner.show();
     this.db.collection('clientes').get().subscribe((res) => {
       res.docs.forEach((item) => {
 
@@ -27,6 +29,7 @@ export class ListClientComponent implements OnInit {
         cliente.ref = item.ref;
 
         this.clientes.push(cliente);
+        this.spinner.hide();
       })
     });
   }

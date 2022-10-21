@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessagesService } from 'src/app/shared/services/messages.service';
+import { NgxSpinnerService } from "ngx-spinner";
+
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-client',
@@ -24,7 +27,10 @@ export class AddClientComponent implements OnInit {
     private storage: AngularFireStorage,
     private db: AngularFirestore,
     private activeRouter: ActivatedRoute,
-    private msg: MessagesService
+    private msg: MessagesService,
+    private spinner: NgxSpinnerService,
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +54,7 @@ export class AddClientComponent implements OnInit {
     this.id = this.activeRouter.snapshot.params.clienteID;
     if (this.id != undefined) {
       this.esEditable = true;
+      this.spinner.show();
       this.db.doc<any>('clientes' + '/' + this.id).valueChanges().subscribe((cliente) => {
         this.formClient.setValue({
           name: cliente.name,
@@ -59,6 +66,7 @@ export class AddClientComponent implements OnInit {
           imgUrl: ''
         })
         this.urlImagen = cliente.imgUrl
+        this.spinner.hide();
       });
     }
   }
@@ -89,16 +97,19 @@ export class AddClientComponent implements OnInit {
     } else {
       this.formClient.value.imgUrl = this.urlImagen;
       this.formClient.value.fechaNacimiento = new Date(this.formClient.value.fechaNacimiento);
-
       this.db.doc('clientes/' + this.id).update(this.formClient.value).then(() => {
         this.msg.messageSuccess(`Cliente ${this.formClient.value.name}`, 'Se actualizo los datos correctamente');
+        this.router.navigate(['clientes']);
       }).catch(() => {
         this.msg.messageError('Error', 'Ocurrio algun error');
       });
-
     }
   }
-  
+
+  goBack(): void {
+    this.location.back();
+  }
+
   //file type validation
   uploadFile(event: any): void {
     if (event.target.files && event.target.files[0]) {

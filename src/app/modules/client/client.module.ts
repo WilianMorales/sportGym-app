@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListClientComponent } from './list-client/list-client.component';
@@ -9,6 +10,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { MessagesService } from 'src/app/shared/services/messages.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -22,6 +24,8 @@ import { MessagesService } from 'src/app/shared/services/messages.service';
     ClientRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
+    NgxSpinnerModule,
     AngularFireStorageModule,
     ProgressbarModule.forRoot()
   ],

@@ -53,8 +53,8 @@
 
         <div class="form-group">
             <label for="imagUrl">Image</label>
-            <input (change)="uploadFile($event)" type="file" formControlName="imgUrl"
-                class="form-control-file" id="imgUrl" [class]="isValidField('imgUrl')">
+            <input (change)="uploadFile($event)" type="file" formControlName="imgUrl" class="form-control-file"
+                id="imgUrl" [class]="isValidField('imgUrl')">
             <div *ngIf="formClient.get('fechaNacimiento')?.errors" class="invalid-feedback">
                 <span *ngIf="formClient.get('fechaNacimiento')?.errors?.['required']">JPG Image is required</span>
             </div>
@@ -64,7 +64,15 @@
             <progressbar [value]="uploadPercent" type="success" [striped]="true">{{uploadPercent}}%</progressbar>
         </div>
 
-        <button *ngIf="!esEditable" class="btn btn-primary" [disabled]="formClient.invalid && !urlImagen" (click)="onSubmit()">Agregar</button>
-        <button *ngIf="esEditable" class="btn btn-primary" (click)="updateClient()">Editar</button>
+        <button *ngIf="!esEditable" class="btn btn-primary" [disabled]="formClient.invalid && !urlImagen"
+            (click)="onSubmit()">Agregar</button>
+        <div class="form-group">
+            <button *ngIf="esEditable" class="btn btn-primary" (click)="updateClient()">Editar</button> | 
+            <button *ngIf="esEditable" class="btn btn-danger" (click)="goBack()">go back</button>
+        </div>
     </form>
+
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#f2f11a" type="pacman" [fullScreen]="true">
+        <p style="color: white"> Cargando... </p>
+    </ngx-spinner>
 </div>

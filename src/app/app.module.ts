@@ -20,6 +20,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { PreciosComponent } from './components/precios/precios.component';
 
 
 
@@ -28,7 +29,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PreciosComponent
   ],
   imports: [
     BrowserModule,

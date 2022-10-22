@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PreciosComponent } from './components/precios/precios.component';
 
 const routes: Routes = [
   /* {
@@ -11,7 +12,13 @@ const routes: Routes = [
     path: 'clientes',
     loadChildren: () =>
       import('./modules/client/client.module').then((m) => m.ClientModule)
-  }/* ,
+  },
+  {
+    path: 'precios',
+    component: PreciosComponent
+  }
+  
+  /* ,
   {
     path: '**',
     redirectTo: '/login',

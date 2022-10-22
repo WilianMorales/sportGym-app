@@ -34,20 +34,8 @@
                 </div>
             </li>
 
-            <li class="nav-item dropdown" dropdown>
-                <a class="nav-link dropdown-toggle" dropdownToggle role="button" data-toggle="dropdown"
-                    aria-expanded="false">
-                    Precios
-                </a>
-                <div class="dropdown-menu" *dropdownMenu>
-                    <a class="dropdown-item" href="#">Agregar</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Ver Precios</a>
-                </div>
-            </li>
-
             <li class="nav-item">
-                <a class="nav-link" href="#">Usuarios</a>
+                <a class="nav-link" [routerLink]="['/precios']">Precios</a>
             </li>
 
             <li class="nav-item dropdown" dropdown>

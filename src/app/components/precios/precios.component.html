@@ -1,0 +1,61 @@
+<div class="container mt-4 mb-4">
+    <div class="row">
+        <div class="col-sm-5 mb-4">
+            <h4>Precios</h4>
+            <ul class="list-group">
+                <li class="list-group-item justify-content-between" *ngFor="let precio of precios" list-group-item list-group-item-action>
+                    <a style="cursor: pointer;" (click)="cargarFormPrecio(precio)">{{precio.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <h4>Agregar/Editar</h4>
+            <form action="" [formGroup]="formPrices">
+                <div class="form-group">
+                    <label for="name">Nombre: </label>
+                    <input type="text" formControlName="name" class="form-control" [class]="isValidField('name')">
+                    <div class="invalid-feedback">
+                        <span *ngIf="formPrices.get('name')?.errors?.['required']">Este campo es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cost">Costo: </label>
+                    <input type="number" formControlName="cost" class="form-control" [class]="isValidField('cost')">
+                    <div class="invalid-feedback">
+                        <span *ngIf="formPrices.get('cost')?.errors?.['required']">Este campo es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duración: </label>
+                    <input type="number" formControlName="duration" class="form-control"
+                        [class]="isValidField('duration')">
+                    <div class="invalid-feedback">
+                        <span *ngIf="formPrices.get('duration')?.errors?.['required']">Este campo es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="typeDuration">Tipo Duración: </label>
+                    <select formControlName="typeDuration" id="typeDuration" class="form-control"
+                        [class]="isValidField('typeDuration')">
+                        <option value="1">Día</option>
+                        <option value="2">Semana</option>
+                        <option value="3">Quincena</option>
+                        <option value="4">Mes</option>
+                        <option value="5">Año</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <span *ngIf="formPrices.get('typeDuration')?.errors?.pattern">Este campo es requerido.</span>
+                    </div>
+                </div>
+                <button *ngIf="!esEditable" [disabled]="formPrices.invalid" class="btn btn-primary"
+                    (click)="onSubmit()">Agregar</button>
+                <button *ngIf="esEditable" [disabled]="formPrices.invalid" class="btn btn-info"
+                    (click)="onUpdate()">Editar</button>
+            </form>
+        </div>
+    </div>
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#f2f11a" type="pacman" [fullScreen]="true">
+        <p style="color: white"> Cargando... </p>
+    </ngx-spinner>
+</div>

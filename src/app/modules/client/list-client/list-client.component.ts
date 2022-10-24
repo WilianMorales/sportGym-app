@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  AngularFirestore } from '@angular/fire/compat/firestore';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from "ngx-spinner";
+import { Client } from 'src/app/models/client';
 
 @Component({
   selector: 'app-list-client',
@@ -10,7 +11,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class ListClientComponent implements OnInit {
 
-  clientes: any[] = new Array<any>();
+  clientes: Client[] = new Array<Client>();
 
   constructor(private db: AngularFirestore, private spinner: NgxSpinnerService) { }
 
@@ -21,10 +22,10 @@ export class ListClientComponent implements OnInit {
   listClientes(): void {
     this.clientes.length = 0;
     this.spinner.show();
-    this.db.collection('clientes').get().subscribe((res) => {
+    this.db.collection<Client>('clientes').get().subscribe((res) => {
       res.docs.forEach((item) => {
 
-        let cliente: any = item.data();
+        let cliente = item.data();
         cliente.id = item.id;
         cliente.ref = item.ref;
 
@@ -45,7 +46,7 @@ export class ListClientComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.db.doc<any>('clientes/' + id).delete();
+        this.db.doc<Client>('clientes/' + id).delete();
         Swal.fire(
           'Deleted!',
           'Your file has been deleted.',

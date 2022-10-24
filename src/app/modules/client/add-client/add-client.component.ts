@@ -83,10 +83,12 @@ export class AddClientComponent implements OnInit {
   onSubmit(): void {
     this.formClient.value.imgUrl = this.urlImagen;
     this.formClient.value.fechaNacimiento = new Date(this.formClient.value.fechaNacimiento);
-    this.db.collection('clientes').add(this.formClient.value).then(() => {
+    this.db.collection<any>('clientes').add(this.formClient.value).then(() => {
       this.msg.messageSuccess(`Cliente ${this.formClient.value.name}`, 'Se agrego correctamente');
       this.formClient.reset();
       this.uploadPercent = 0;
+    }).catch(() => {
+      this.msg.messageError('Error', 'Ocurrio algun error');
     })
 
   }
@@ -97,7 +99,7 @@ export class AddClientComponent implements OnInit {
     } else {
       this.formClient.value.imgUrl = this.urlImagen;
       this.formClient.value.fechaNacimiento = new Date(this.formClient.value.fechaNacimiento);
-      this.db.doc('clientes/' + this.id).update(this.formClient.value).then(() => {
+      this.db.doc<any>('clientes/' + this.id).update(this.formClient.value).then(() => {
         this.msg.messageSuccess(`Cliente ${this.formClient.value.name}`, 'Se actualizo los datos correctamente');
         this.router.navigate(['clientes']);
       }).catch(() => {

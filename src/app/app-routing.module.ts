@@ -3,11 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { PreciosComponent } from './components/precios/precios.component';
 
 const routes: Routes = [
-  /* {
+  {
     path: '',
-    redirectTo: '/login',
+    redirectTo: 'inscription',
     pathMatch: 'full'
-  }, */
+  },
+  {
+    path: 'inscription',
+    loadChildren: () =>
+      import('./modules/inscription/inscription.module').then((m) => m.InscriptionModule)
+  },
   {
     path: 'clientes',
     loadChildren: () =>
@@ -17,13 +22,6 @@ const routes: Routes = [
     path: 'precios',
     component: PreciosComponent
   }
-  
-  /* ,
-  {
-    path: '**',
-    redirectTo: '/login',
-    pathMatch: 'full'
-  } */
 ];
 
 @NgModule({

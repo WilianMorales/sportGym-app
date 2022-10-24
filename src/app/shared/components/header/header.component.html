@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand">
+    <a href="#" class="navbar-brand">
         <img src="/assets/imgs/logo.png" width="120" height="60" class="d-inline-block align-top" alt="SportGym">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -16,7 +16,7 @@
                     Inscripción
                 </a>
                 <div class="dropdown-menu" *dropdownMenu>
-                    <a class="dropdown-item" href="#">Nueva Inscripción</a>
+                    <a class="dropdown-item" [routerLink]="['/inscription']">Inscripción</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Ver Inscripciones</a>
                 </div>

@@ -88,4 +88,9 @@ export class PreciosComponent implements OnInit {
       this.msg.messageError('Error', 'Ocurrio un error');
     });
   }
+
+  cancelUpdated(): void {
+    this.formPrices.reset();
+    this.esEditable = false;
+  }
 }

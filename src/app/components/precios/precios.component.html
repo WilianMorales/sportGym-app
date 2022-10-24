@@ -3,7 +3,8 @@
         <div class="col-sm-5 mb-4">
             <h4>Precios</h4>
             <ul class="list-group">
-                <li class="list-group-item justify-content-between" *ngFor="let precio of precios" list-group-item list-group-item-action>
+                <li class="list-group-item justify-content-between" *ngFor="let precio of precios" list-group-item
+                    list-group-item-action>
                     <a style="cursor: pointer;" (click)="cargarFormPrecio(precio)">{{precio.name}}</a>
                 </li>
             </ul>
@@ -52,6 +53,7 @@
                     (click)="onSubmit()">Agregar</button>
                 <button *ngIf="esEditable" [disabled]="formPrices.invalid" class="btn btn-info"
                     (click)="onUpdate()">Editar</button>
+                <button *ngIf="esEditable" class="btn btn-danger" (click)="cancelUpdated()">Cancelar</button>
             </form>
         </div>
     </div>

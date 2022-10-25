@@ -3,8 +3,8 @@ import { DocumentReference } from "@angular/fire/compat/firestore";
 export class Precio {
     id!: string;
     name!: string;
-    cost!: number;
+    cost?: number;
     duration!: number;
-    typeDuration!: string;
+    typeDuration!: number;
     ref!: DocumentReference;
 }

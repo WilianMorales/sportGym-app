@@ -1,13 +1,13 @@
 import { DocumentReference } from "@angular/fire/compat/firestore";
 
 export class Inscription {
-    date!: Date;
-    finalDate!: Date;
+    date?: Date;
+    finalDate?: Date;
     client?: DocumentReference
     prices?: DocumentReference;
-    subTotal!: number;
-    igv!: number;
-    total!: number;
+    subTotal?: number;
+    igv?: number;
+    total?: number;
 
     constructor() {
         this.date = this.date;

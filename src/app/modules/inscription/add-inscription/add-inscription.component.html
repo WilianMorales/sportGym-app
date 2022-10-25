@@ -1,19 +1,62 @@
 <div class="container mt-4 mb-4">
     <div class="row">
-        <div class="col-sm-6">
-            <app-select-client [name]="selectedClient.name" (selectedClient)="assignClient($event)"
-                (canceledClient)="deletedClient()"></app-select-client>
+        <div class="col-sm-6 mb-4">
+            <app-select-client (selectedClient)="assignClient($event)" (canceledClient)="deletedClient()">
+            </app-select-client>
 
-            <div>
+            <div class="form-group mb-3">
                 <label for="">Precio</label>
-                <select class="form-control" name="" id="">
-                    <option *ngFor="let price of prices" value="">{{price.name}}</option>
+                <select (change)="priceSelect($event)" class="form-control" name="" id="">
+                    <option [value]="null">Seleccione un precio</option>
+                    <option *ngFor="let price of prices" [value]="price.id">{{price.name}}</option>
                 </select>
             </div>
 
+            <div class="form-group">
+                <label for="fechaInicio">Fecha Inicio</label>
+                <input type="text" class="form-control" [value]="inscription.date | date" id="fechaInicio" disabled>
+            </div>
+            <div class="form-group">
+                <label for="fechaFinal">Fecha Termina</label>
+                <input type="text" class="form-control" [value]="inscription.finalDate  | date" id="fechaFinal"
+                    disabled>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputSubTotal">SubTotal</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">S/.</span>
+                        </div>
+                        <input type="number" class="form-control" [value]="inscription.subTotal" disabled>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputIgv">IGV</label>
+                    <input type="number" class="form-control" id="inputCity" [value]="inscription.igv" disabled>
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="inputTotal">Total</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">S/.</span>
+                        </div>
+                        <input type="number" class="form-control" [value]="inscription.total" disabled>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" (click)="guardar()">Guardar</button>
+
         </div>
-        <div class="col-sm-6">
-            Segundos
+        <div class="col-sm-6 text-center ">
+            <figure class="figure" *ngIf="selectedClient.imgUrl">
+                <img [src]="selectedClient.imgUrl" class="figure-img img-fluid rounded" width="400" height="300" alt="">
+            </figure>
         </div>
     </div>
     <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#f2f11a" type="pacman" [fullScreen]="true">

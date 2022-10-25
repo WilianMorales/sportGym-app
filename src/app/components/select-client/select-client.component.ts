@@ -11,7 +11,7 @@ export class SelectClientComponent implements OnInit {
 
   clientes: Client[] = new Array<Client>();
 
-  @Input('name') name?: string;
+  @Input('nombre') nombre?: string;
   @Output('selectedClient') selectedClient = new EventEmitter();
   @Output('canceledClient') canceledClient = new EventEmitter();
 
@@ -46,16 +46,15 @@ export class SelectClientComponent implements OnInit {
   }
 
   selectClient(cliente: Client) {
-    this.name = cliente.name + ' ' + cliente.lastName;
+    this.nombre = cliente.name + ' ' + cliente.lastName;
     this.clientes.forEach((cliente) => {
       cliente.visible = false;
     });
-
-    this.selectedClient.emit(cliente.name);
+    this.selectedClient.emit(cliente);
   }
 
   cancelSearch(): void {
-    this.name = undefined;
+    this.nombre = '';
     this.canceledClient.emit();
   }
 

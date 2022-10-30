@@ -14,7 +14,7 @@
                     class="card-img-top img-client" [alt]="cliente.name">
                 <div class="card-body">
                     <h5 class="card-title">{{cliente.name}} {{cliente.lastName}}</h5>
-                    <p>{{cliente.id}}</p>
+                    <!--<p>{{cliente.id}}</p> -->
                     <a [routerLink]="['/clientes/editar-cliente/', cliente.id]" class="card-link">Editar</a>
                     <a (click)="deleteClient(cliente.id)" class="text-danger card-link">Desactivar</a>
                 </div>

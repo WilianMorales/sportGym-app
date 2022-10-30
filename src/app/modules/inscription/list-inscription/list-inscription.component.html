@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let inscripcion of inscripciones">
-                <td><img width="60" height="50" [src]="inscripcion.clienteObtenido.imgUrl" alt="imagenCliente"></td>
+                <td><img width="65" height="65" [src]="inscripcion.clienteObtenido.imgUrl" alt="imagenCliente"></td>
                 <th scope="row">{{inscripcion.clienteObtenido.name}} {{inscripcion.clienteObtenido.lastName}}</th>
                 <td>{{inscripcion.date | date}}</td>
                 <td>{{inscripcion.finalDate | date}}</td>

@@ -10,7 +10,7 @@
 
     <div class="collapse navbar-collapse" [collapse]="!isCollapsed" [isAnimated]="true" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item dropdown" dropdown [routerLinkActive]="['active']">
+            <li class="nav-item dropdown active" dropdown>
                 <a class="nav-link dropdown-toggle" dropdownToggle role="button" data-toggle="dropdown"
                     aria-expanded="false">
                     Inscripción
@@ -22,7 +22,7 @@
                 </div>
             </li>
 
-            <li class="nav-item dropdown" dropdown [routerLinkActive]="['active']">
+            <li class="nav-item dropdown" dropdown>
                 <a class="nav-link dropdown-toggle" dropdownToggle role="button" data-toggle="dropdown"
                     aria-expanded="false">
                     Clientes
@@ -35,7 +35,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/precios']" [routerLinkActive]="['active']">Precios</a>
+                <a class="nav-link" [routerLink]="['/precios']">Precios</a>
             </li>
 
             <li class="nav-item">

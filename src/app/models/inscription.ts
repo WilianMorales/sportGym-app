@@ -18,4 +18,38 @@ export class Inscription {
         this.igv = this.igv;
         this.total = this.total;
     }
+
+    validar(): any {
+        let respuesta = {
+            esValido: false,
+            message: ''
+        }
+
+        if(this.client == null || this.client == undefined) {
+            respuesta.esValido = false;
+            respuesta.message = 'Porfavor seleccione un cliente';
+            return respuesta;
+        }
+
+        if(this.prices == null || this.prices == undefined) {
+            respuesta.esValido = false;
+            respuesta.message = 'Porfavor seleccione un precio';
+            return respuesta;
+        }
+
+        if(this.date == null || this.date == undefined) {
+            respuesta.esValido = false;
+            respuesta.message = 'No tiene fecha de inicio';
+            return respuesta;
+        }
+
+        if(this.finalDate == null || this.finalDate == undefined) {
+            respuesta.esValido = false;
+            respuesta.message = 'No tiene fecha de final';
+            return respuesta;
+        }
+
+        respuesta.esValido = true;
+        return respuesta
+    }
 }

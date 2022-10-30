@@ -1,0 +1,27 @@
+<div class="container mt-4 mb-4">
+
+    <h3 class="mt-2 mb-4">Listado de inscripciones:</h3>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Imagen</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Fecha Inicio</th>
+                <th scope="col">Fecha Termino</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let inscripcion of inscripciones">
+                <td><img width="60" height="50" [src]="inscripcion.clienteObtenido.imgUrl" alt="imagenCliente"></td>
+                <th scope="row">{{inscripcion.clienteObtenido.name}} {{inscripcion.clienteObtenido.lastName}}</th>
+                <td>{{inscripcion.date | date}}</td>
+                <td>{{inscripcion.finalDate | date}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#f2f11a" type="pacman" [fullScreen]="true">
+        <p style="color: white"> Cargando... </p>
+    </ngx-spinner>
+</div>

@@ -10,19 +10,19 @@
 
     <div class="collapse navbar-collapse" [collapse]="!isCollapsed" [isAnimated]="true" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item dropdown" dropdown>
-                <a class="nav-link dropdown-toggle active" dropdownToggle role="button" data-toggle="dropdown"
+            <li class="nav-item dropdown" dropdown [routerLinkActive]="['active']">
+                <a class="nav-link dropdown-toggle" dropdownToggle role="button" data-toggle="dropdown"
                     aria-expanded="false">
                     Inscripción
                 </a>
                 <div class="dropdown-menu" *dropdownMenu>
                     <a class="dropdown-item" [routerLink]="['/inscription']">Inscripción</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Ver Inscripciones</a>
+                    <a class="dropdown-item" [routerLink]="['/inscription/list-inscription']">Ver Inscripciones</a>
                 </div>
             </li>
 
-            <li class="nav-item dropdown" dropdown>
+            <li class="nav-item dropdown" dropdown [routerLinkActive]="['active']">
                 <a class="nav-link dropdown-toggle" dropdownToggle role="button" data-toggle="dropdown"
                     aria-expanded="false">
                     Clientes
@@ -35,21 +35,11 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/precios']">Precios</a>
+                <a class="nav-link" [routerLink]="['/precios']" [routerLinkActive]="['active']">Precios</a>
             </li>
 
-            <li class="nav-item dropdown" dropdown>
-                <a class="nav-link dropdown-toggle" dropdownToggle role="button" data-toggle="dropdown"
-                    aria-expanded="false">
-                    Reportes
-                </a>
-                <div class="dropdown-menu" *dropdownMenu>
-                    <a class="dropdown-item" href="#">Suscripciones Diarias</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Suscripciones Mensuales</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Mas Vendidas</a>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/']">Reportes</a>
             </li>
         </ul>
 

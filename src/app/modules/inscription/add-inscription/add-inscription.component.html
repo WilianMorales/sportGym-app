@@ -6,7 +6,7 @@
 
             <div class="form-group mb-3">
                 <label for="">Precio</label>
-                <select (change)="priceSelect($event)" class="form-control" name="" id="">
+                <select [(ngModel)]="idPrice" (change)="priceSelect($event)" class="form-control" name="" id="">
                     <option [value]="null">Seleccione un precio</option>
                     <option *ngFor="let price of prices" [value]="price.id">{{price.name}}</option>
                 </select>

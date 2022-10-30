@@ -10,21 +10,23 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class LoginComponent implements OnInit {
 
-  formLogin: FormGroup;
+  formLogin!: FormGroup;
+  private isEmail = /\S+@\S+\.\S+/;
   datosCorrectos: boolean = true;
   textError = '';
-  constructor(private fb: FormBuilder, private afAuth: AngularFireAuth, private spinner: NgxSpinnerService) {
-    this.formLogin = this.fb.group({
-      email: ['', Validators.compose([
-        Validators.required, Validators.email
-      ])],
-      password: ['', Validators.compose([
-        Validators.required, Validators.minLength(6)
-      ])],
-    });
+  constructor(private fb: FormBuilder, private afAuth: AngularFireAuth, private spinner: NgxSpinnerService) { 
   }
 
   ngOnInit(): void {
+    this.formLogin = this.fb.group({
+      email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+  }
+
+  isValidField(field: string): string {
+    const validatedField = this.formLogin.get(field);
+    return (!validatedField?.valid && validatedField?.touched) ? 'is-invalid' : validatedField?.touched ? 'is-valid' : '';
   }
 
   ingresar(): void {
